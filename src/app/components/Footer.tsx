@@ -7,15 +7,15 @@ export default function Footer() {
 
   const footerLinks = {
     producto: [
-      { name: 'Características', href: '/features' },
-      { name: 'Precios', href: '/contact' },
-      { name: 'Demo', href: '/features' },
-      { name: 'FAQ', href: '/about' }
+      { name: 'Características', href: '/caracteristicas' },
+      { name: 'Precios', href: '/contacto' },
+      { name: 'Demo', href: '/caracteristicas' },
+      { name: 'FAQ', href: '/nosotros' }
     ],
     compañia: [
-      { name: 'Sobre Nosotros', href: '/about' },
-      { name: 'Equipo', href: '/about' },
-      { name: 'Contacto', href: '/contact' },
+      { name: 'Sobre Nosotros', href: '/nosotros' },
+      { name: 'Equipo', href: '/nosotros' },
+      { name: 'Contacto', href: '/contacto' },
       { name: 'Blog', href: '/' }
     ],
     legal: [
@@ -25,10 +25,10 @@ export default function Footer() {
       { name: 'Licencias', href: '/' }
     ],
     social: [
-      { name: 'Twitter', icon: '🐦', href: '#' },
-      { name: 'Instagram', icon: '📷', href: '#' },
-      { name: 'LinkedIn', icon: '💼', href: '#' },
-      { name: 'YouTube', icon: '📺', href: '#' }
+      { name: 'Twitter', icon: '🐦', href: 'https://twitter.com' },
+      { name: 'Instagram', icon: '📷', href: 'https://instagram.com' },
+      { name: 'LinkedIn', icon: '💼', href: 'https://linkedin.com' },
+      { name: 'YouTube', icon: '📺', href: 'https://youtube.com' }
     ]
   };
 
@@ -56,6 +56,8 @@ export default function Footer() {
                 <a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gradient-to-r hover:from-green-600 hover:to-emerald-600 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg"
                   aria-label={social.name}
                 >

@@ -1,7 +1,5 @@
 'use client';
 
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 
 export default function Features() {
@@ -100,126 +98,120 @@ export default function Features() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
-      <Header />
-      
-      <main className="pt-32 pb-20">
-        {/* Hero Section */}
-        <section className="container mx-auto px-4 mb-16">
-          <div className={`text-center transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <div className="inline-block mb-4">
-              <span className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                CARACTERÍSTICAS COMPLETAS
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-              Tecnología <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">de Vanguardia</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Todo lo que necesitas saber sobre las capacidades de GaiaSense
-            </p>
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white pt-20">
+      {/* Hero Section */}
+      <section className="container mx-auto px-4 mb-16 pt-12">
+        <div className={`text-center transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-block mb-4">
+            <span className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              CARACTERÍSTICAS COMPLETAS
+            </span>
           </div>
-        </section>
+          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+            Tecnología <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">de Vanguardia</span>
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Todo lo que necesitas saber sobre las capacidades de GaiaSense
+          </p>
+        </div>
+      </section>
 
-        {/* Tabs */}
-        <section className="container mx-auto px-4 mb-12">
-          <div className="flex flex-wrap justify-center gap-4">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg scale-105'
-                    : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200'
-                }`}
-              >
-                <span className="mr-2">{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </section>
+      {/* Tabs */}
+      <section className="container mx-auto px-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
+                activeTab === tab.id
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200'
+              }`}
+            >
+              <span className="mr-2">{tab.icon}</span>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </section>
 
-        {/* Features Grid */}
-        <section className="container mx-auto px-4 mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {features[activeTab as keyof typeof features].map((feature, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100"
-              >
-                <div className="text-6xl mb-4">{feature.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="flex flex-wrap gap-2">
-                    {feature.specs.map((spec, i) => (
-                      <span
-                        key={i}
-                        className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
-                      >
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
+      {/* Features Grid */}
+      <section className="container mx-auto px-4 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {features[activeTab as keyof typeof features].map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-gray-100"
+            >
+              <div className="text-6xl mb-4">{feature.icon}</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+              <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
+              <div className="border-t border-gray-200 pt-4">
+                <div className="flex flex-wrap gap-2">
+                  {feature.specs.map((spec, i) => (
+                    <span
+                      key={i}
+                      className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
+                    >
+                      {spec}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* Comparison Table */}
-        <section className="container mx-auto px-4 mb-20">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-            GaiaSense vs Competencia
-          </h2>
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Característica</th>
-                  <th className="px-6 py-4 text-center">GaiaSense</th>
-                  <th className="px-6 py-4 text-center">Competidor A</th>
-                  <th className="px-6 py-4 text-center">Competidor B</th>
+      {/* Comparison Table */}
+      <section className="container mx-auto px-4 mb-20">
+        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
+          GaiaSense vs Competencia
+        </h2>
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+              <tr>
+                <th className="px-6 py-4 text-left">Característica</th>
+                <th className="px-6 py-4 text-center">GaiaSense</th>
+                <th className="px-6 py-4 text-center">Competidor A</th>
+                <th className="px-6 py-4 text-center">Competidor B</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { feature: 'IA Personalizable', gs: '✅', a: '❌', b: '❌' },
+                { feature: 'Chat Conversacional', gs: '✅', a: '⚠️', b: '❌' },
+                { feature: 'Múltiples Sensores', gs: '✅', a: '✅', b: '⚠️' },
+                { feature: 'Batería 6 meses', gs: '✅', a: '❌', b: '✅' },
+                { feature: 'App Android/iOS', gs: '✅', a: '✅', b: '✅' },
+                { feature: 'Gamificación', gs: '✅', a: '❌', b: '❌' }
+              ].map((row, index) => (
+                <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                  <td className="px-6 py-4 font-medium text-gray-900">{row.feature}</td>
+                  <td className="px-6 py-4 text-center text-2xl">{row.gs}</td>
+                  <td className="px-6 py-4 text-center text-2xl">{row.a}</td>
+                  <td className="px-6 py-4 text-center text-2xl">{row.b}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: 'IA Personalizable', gs: '✅', a: '❌', b: '❌' },
-                  { feature: 'Chat Conversacional', gs: '✅', a: '⚠️', b: '❌' },
-                  { feature: 'Múltiples Sensores', gs: '✅', a: '✅', b: '⚠️' },
-                  { feature: 'Batería 6 meses', gs: '✅', a: '❌', b: '✅' },
-                  { feature: 'App Android/iOS', gs: '✅', a: '✅', b: '✅' },
-                  { feature: 'Gamificación', gs: '✅', a: '❌', b: '❌' }
-                ].map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                    <td className="px-6 py-4 font-medium text-gray-900">{row.feature}</td>
-                    <td className="px-6 py-4 text-center text-2xl">{row.gs}</td>
-                    <td className="px-6 py-4 text-center text-2xl">{row.a}</td>
-                    <td className="px-6 py-4 text-center text-2xl">{row.b}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        {/* CTA Section */}
-        <section className="container mx-auto px-4">
-          <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-3xl p-12 text-center text-white">
-            <h2 className="text-4xl font-bold mb-6">¿Listo para Empezar?</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Únete a miles de usuarios que ya están revolucionando el cuidado de sus plantas
-            </p>
-            <button className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
-              Solicitar Demo Gratis
-            </button>
-          </div>
-        </section>
-      </main>
-
-      <Footer />
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 mb-20">
+        <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-3xl p-12 text-center text-white">
+          <h2 className="text-4xl font-bold mb-6">¿Listo para Empezar?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Únete a miles de usuarios que ya están revolucionando el cuidado de sus plantas
+          </p>
+          <button className="bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+            Solicitar Demo Gratis
+          </button>
+        </div>
+      </section>
     </div>
   );
 }

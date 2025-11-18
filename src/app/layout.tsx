@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "GaiaSense - Tu Asistente de IA para Plantas",
@@ -13,9 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        {children}
+      <body className="bg-white text-gray-900">
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
-  )
+  );
 }
