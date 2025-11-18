@@ -46,10 +46,10 @@ export default function Hero() {
             {' '}para una experiencia única.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - ARREGLADOS */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/contact"
+              href="/contacto"
               className="group relative bg-gradient-to-r from-green-600 to-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
             >
               <span className="relative z-10">Solicita tu GaiaSense</span>
@@ -57,7 +57,7 @@ export default function Hero() {
             </Link>
             
             <Link
-              href="/features"
+              href="/caracteristicas"
               className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm text-green-700 px-10 py-4 rounded-full font-bold text-lg border-2 border-green-300 hover:bg-white hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               <span>Ver Demo</span>

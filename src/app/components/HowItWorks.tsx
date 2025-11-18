@@ -1,129 +1,119 @@
 'use client';
 
-import { useState } from 'react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export default function Features() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+export default function Hero() {
+  const [mounted, setMounted] = useState(false);
 
-  const features = [
-    {
-      icon: '💧',
-      title: 'Monitoreo de Humedad',
-      description: 'Sensor capacitivo de última generación que mide la humedad del suelo con precisión milimétrica en tiempo real.',
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: '🤖',
-      title: 'IA Personalizable',
-      description: 'Configura la personalidad de tu asistente: desde científica formal hasta tu mejor amiga. Tú decides el tono.',
-      gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      icon: '📱',
-      title: 'App Android Nativa',
-      description: 'Recibe notificaciones push instantáneas, gráficas interactivas y consejos personalizados directo en tu móvil.',
-      gradient: 'from-green-500 to-emerald-500'
-    },
-    {
-      icon: '💬',
-      title: 'Lenguaje Natural',
-      description: 'Olvida datos técnicos complejos. La IA traduce toda la información a conversaciones fáciles y amigables.',
-      gradient: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: '🎮',
-      title: 'Tamagotchi Vegetal',
-      description: 'Crea vínculos emocionales reales. Cada planta tiene personalidad única y evoluciona con tu cuidado diario.',
-      gradient: 'from-indigo-500 to-blue-500'
-    },
-    {
-      icon: '🌿',
-      title: 'Cuidado Inteligente',
-      description: 'Algoritmos avanzados que aprenden de tus plantas y te dan recomendaciones específicas para cada especie.',
-      gradient: 'from-teal-500 to-green-500'
-    }
-  ];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-10 left-10 text-9xl">🌱</div>
-        <div className="absolute bottom-10 right-10 text-9xl">🌿</div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <span className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              CARACTERÍSTICAS
-            </span>
+      {/* Content */}
+      <div className="container mx-auto px-4 py-32 relative z-10">
+        <div className={`text-center transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-green-200 shadow-lg">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-sm font-medium text-green-700">Tecnología IoT + IA</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4">
-            Tecnología de
-            <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"> Vanguardia</span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Combinamos IoT, Inteligencia Artificial y diseño intuitivo para revolucionar el cuidado de plantas
-          </p>
-        </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-transparent hover:shadow-2xl transition-all duration-500 overflow-hidden"
+          {/* Main Heading */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              Cuida tus Plantas
+            </span>
+            <br />
+            <span className="text-gray-800">
+              con Inteligencia
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            El primer sensor IoT que convierte tus plantas en tu mejor amiga digital. 
+            <span className="font-semibold text-green-600"> Monitoreo en tiempo real + IA conversacional</span> 
+            {' '}para una experiencia única.
+          </p>
+
+          {/* CTA Buttons - ARREGLADOS */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link
+              href="/contacto"
+              className="group relative bg-gradient-to-r from-green-600 to-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
             >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
-              
-              {/* Icon */}
-              <div className="relative mb-5">
-                <div className={`text-6xl transform transition-all duration-500 ${
-                  hoveredIndex === index ? 'scale-110 rotate-12' : 'scale-100 rotate-0'
-                }`}>
-                  {feature.icon}
-                </div>
+              <span className="relative z-10">Solicita tu GaiaSense</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
+            
+            <Link
+              href="/caracteristicas"
+              className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm text-green-700 px-10 py-4 rounded-full font-bold text-lg border-2 border-green-300 hover:bg-white hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <span>Ver Demo</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          </div>
+
+          {/* Features Pills */}
+          <div className="flex flex-wrap justify-center gap-3 mt-12">
+            {['🤖 IA Personalizable', '💧 Sensor Avanzado', '📱 App Android', '🎮 Tamagotchi Real'].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-700 border border-green-200 hover:bg-white hover:shadow-lg transition-all duration-300"
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
+              >
+                {feature}
               </div>
-
-              {/* Title */}
-              <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
-                {feature.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Hover Arrow */}
-              <div className={`mt-4 flex items-center gap-2 text-green-600 font-semibold transition-all duration-300 ${
-                hoveredIndex === index ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-              }`}>
-                <span>Saber más</span>
-                <span>→</span>
-              </div>
-
-              {/* Decorative Corner */}
-              <div className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-bl-full`}></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <p className="text-gray-600 mb-6">
-            ¿Quieres ver todas las características en acción?
-          </p>
-          <button className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300">
-            Explorar Características Completas
-          </button>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 rounded-full border-2 border-green-600 flex justify-center">
+          <div className="w-1 h-3 bg-green-600 rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0% {
+            transform: translate(0px, 0px) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0px, 0px) scale(1);
+          }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,145 +1,117 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function CTA() {
-  const [email, setEmail] = useState('');
+export default function Hero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log('Email submitted:', email);
-    setEmail('');
-  };
-
   return (
-    <section className="relative py-24 overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-600">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIiBzdHJva2Utd2lkdGg9IjIiLz48L2c+PC9zdmc+')] opacity-10"></div>
-      </div>
-
-      {/* Floating Elements */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-white rounded-full opacity-10 blur-xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-white rounded-full opacity-10 blur-xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-white rounded-full opacity-10 blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-green-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 left-1/2 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Content */}
+      <div className="container mx-auto px-4 py-32 relative z-10">
         <div className={`text-center transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Icon */}
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="text-7xl animate-bounce-slow">🌱</div>
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping"></div>
-            </div>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-green-200 shadow-lg">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-sm font-medium text-green-700">Tecnología IoT + IA</span>
           </div>
 
-          {/* Heading */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-            ¿Listo para Revolucionar el
-            <br />
-            <span className="relative inline-block">
-              Cuidado de tus Plantas?
-              <div className="absolute bottom-2 left-0 right-0 h-3 bg-yellow-400 opacity-50 -rotate-1"></div>
+          {/* Main Heading */}
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+            <span className="bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+              Cuida tus Plantas
             </span>
-          </h2>
+            <br />
+            <span className="text-gray-800">
+              con Inteligencia
+            </span>
+          </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-green-50 mb-10 max-w-3xl mx-auto leading-relaxed">
-            Únete a más de <span className="font-bold text-white">1,000+ jardineros</span> que ya están usando GaiaSense para mantener sus plantas sanas y felices.
+          <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+            El primer sensor IoT que convierte tus plantas en tu mejor amiga digital. 
+            <span className="font-semibold text-green-600"> Monitoreo en tiempo real + IA conversacional</span> 
+            {' '}para una experiencia única.
           </p>
 
-          {/* Email Form */}
-          <div className="max-w-md mx-auto mb-8">
-            <div className="flex flex-col sm:flex-row gap-3 bg-white/10 backdrop-blur-lg p-2 rounded-full border border-white/20">
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="tucorreo@ejemplo.com"
-                className="flex-1 bg-white/90 text-gray-900 px-6 py-3 rounded-full outline-none placeholder-gray-500"
-              />
-              <button
-                onClick={handleSubmit}
-                className="bg-yellow-400 text-gray-900 px-8 py-3 rounded-full font-bold hover:bg-yellow-300 hover:scale-105 transition-all duration-300 shadow-lg whitespace-nowrap"
-              >
-                Obtener Early Access
-              </button>
-            </div>
-            <p className="text-green-100 text-sm mt-3">
-              🎁 Los primeros 100 usuarios reciben <span className="font-bold text-white">20% de descuento</span>
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          {/* CTA Buttons - ARREGLADOS */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
-              href="/contact"
-              className="group bg-white text-green-600 px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2"
+              href="/contacto"
+              className="group relative bg-gradient-to-r from-green-600 to-emerald-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden"
             >
-              <span>Solicitar Demo Personalizada</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
+              <span className="relative z-10">Solicita tu GaiaSense</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
             
             <Link
-              href="/features"
-              className="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
+              href="/caracteristicas"
+              className="group flex items-center gap-2 bg-white/80 backdrop-blur-sm text-green-700 px-10 py-4 rounded-full font-bold text-lg border-2 border-green-300 hover:bg-white hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
-              Ver Características
+              <span>Ver Demo</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
             </Link>
           </div>
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-8 items-center opacity-90">
-            <div className="flex items-center gap-2 text-white">
-              <div className="text-2xl">✓</div>
-              <span className="text-sm font-medium">Envío Gratis</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <div className="text-2xl">✓</div>
-              <span className="text-sm font-medium">Garantía 30 días</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <div className="text-2xl">✓</div>
-              <span className="text-sm font-medium">Soporte 24/7</span>
-            </div>
-            <div className="flex items-center gap-2 text-white">
-              <div className="text-2xl">⭐</div>
-              <span className="text-sm font-medium">4.9/5 de 500+ reseñas</span>
-            </div>
+          {/* Features Pills */}
+          <div className="flex flex-wrap justify-center gap-3 mt-12">
+            {['🤖 IA Personalizable', '💧 Sensor Avanzado', '📱 App Android', '🎮 Tamagotchi Real'].map((feature, index) => (
+              <div
+                key={index}
+                className="bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-medium text-gray-700 border border-green-200 hover:bg-white hover:shadow-lg transition-all duration-300"
+                style={{
+                  animationDelay: `${index * 100}ms`
+                }}
+              >
+                {feature}
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 rounded-full border-2 border-green-600 flex justify-center">
+          <div className="w-1 h-3 bg-green-600 rounded-full mt-2 animate-pulse"></div>
+        </div>
+      </div>
+
       <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
+        @keyframes blob {
+          0% {
+            transform: translate(0px, 0px) scale(1);
           }
-          50% {
-            transform: translateY(-20px);
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
           }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        @keyframes bounce-slow {
-          0%, 100% {
-            transform: translateY(0);
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
           }
-          50% {
-            transform: translateY(-10px);
+          100% {
+            transform: translate(0px, 0px) scale(1);
           }
         }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s ease-in-out infinite;
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
         }
       `}</style>
     </section>
